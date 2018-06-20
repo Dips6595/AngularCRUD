@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+form.emp-form{
+    background-color: #dbdbdb;
+    border-radius: 4px;
+    padding: 10px;
+}
+div.validation-error{
+    color: red;
+    text-align: center;
+}
+
+button:hover,a.btn:hover{
+    cursor: pointer;
+}
+.userccount {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 25px 30px;
+}
+.userccount p {
+	text-align: center;
+	line-height: 24px;
+	color: #999;
+}
+.userccount h5 {
+	font-size: 20px;
+	color: #555;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+.listpgWraper {
+	background: #f0f0f0;
+	padding: 50px 0;
+	min-height: 400px;
+}

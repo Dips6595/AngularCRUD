@@ -1,0 +1,84 @@
+<form class="cnt-form" #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
+    <div style="padding-left:16px">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+              <input class="form-control" name="LoginID" #LoginID="ngModel" [(ngModel)]="clientService.selectedClient.LoginID"
+                placeholder="UserName (Email)" required [email] = "clientService.selectedClient.LoginID !== ''">
+              <div class="validation-error" *ngIf="LoginID.errors?.required && LoginID.touched">Email is Required.</div>
+              <div class="validation-error" *ngIf="LoginID.errors?.email && LoginID.touched">Email is Invalid.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input class="form-control" type="password" name="Pass" #Pass="ngModel" [(ngModel)]="clientService.selectedClient.Pass"
+                placeholder="Password" required>
+              <div class="validation-error" *ngIf="Pass.invalid && Pass.touched">Password is Required.</div>
+            </div>
+            <div class="form-group col-md-6">
+                <input class="form-control" type="password" name="confirmPass" #confirmPass="ngModel" [(ngModel)]="clientService.selectedClient.confirmPass"
+                  placeholder="Confirm Password" required  appConfirmEqualValidator= "Pass">
+                <div class="validation-error" *ngIf="confirmPass.errors?.required && confirmPass.touched">Confirm Password is Required.</div>
+                <div class="validation-error" *ngIf="confirmPass.errors?.notEqual && !confirmPass.errors?.required && confirmPass.touched">Password and Confirm Password does not match.</div>
+            </div>
+        </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input class="form-control" name="FirstName" #FirstName="ngModel" [(ngModel)]="clientService.selectedClient.FirstName"
+                placeholder="First Name" required>
+              <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">FirstName is Required.</div>
+            </div>
+            <div class="form-group col-md-6">
+              <input class="form-control" name="LastName" #LastName="ngModel" [(ngModel)]="clientService.selectedClient.LastName" placeholder="Last Name"
+                required>
+              <div class="validation-error" *ngIf="LastName.invalid && LastName.touched">LastName is Required.</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <input class="form-control" name="Address" #Address="ngModel" [(ngModel)]="clientService.selectedClient.Address"
+                placeholder="Address">
+              <!-- <div class="validation-error" *ngIf="Address.errors?.required && Address.touched">Address is Required.</div> -->
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+                <input class="form-control" name="Email" #Email="ngModel" [(ngModel)]="clientService.selectedClient.Email" placeholder="Email" required [email]="clientService.selectedClient.Email !== ''">
+                <div class="validation-error" *ngIf="Email.errors?.required && Email.touched">Email is Required.</div>
+              <div class="validation-error" *ngIf="Email.errors?.email && Email.touched">Email is Invalid.</div>
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <input class="form-control" name="HomePhoneNo" #HomePhoneNo="ngModel" [(ngModel)]="clientService.selectedClient.HomePhoneNo" placeholder="HomePhone" required>
+                  <div class="validation-error" *ngIf="HomePhoneNo.errors?.required && HomePhoneNo.touched">HomePhoneNo is Required.</div>
+              </div>
+            <div class="form-group col-md-6">
+              <input class="form-control" name="CellPhoneNo" #CellPhoneNo="ngModel" [(ngModel)]="clientService.selectedClient.CellPhoneNo" placeholder="CellPhoneNo" required>
+              <div class="validation-error" *ngIf="CellPhoneNo.errors?.required && CellPhoneNo.touched">CellPhoneNo is Required.</div>
+          </div>
+        </div>
+          <div class="form-row">
+              <div class="form-group col-md-12">
+                  <label class="checkbox-inline control-label">
+                    <input type="checkbox" required name="TxtSubscribe"
+                           #TxtSubscribe="ngModel" [(ngModel)]="clientService.selectedClient.TxtSubscribe">
+                           Subscribe to Text Message alert
+                  </label>
+                </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <button [disabled]="!clientForm.valid" type="submit" class="btn btn-lg btn-block btn-info">
+                <i class="fa fa-floppy-o"></i> Submit</button>
+            </div>
+            <div class="form-group col-md-4">
+              <button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(clientForm)">
+                <i class="fa fa-repeat"></i> Reset</button>
+            </div>
+          </div>
+    </div>
+</form>
+
+  
+  
+  

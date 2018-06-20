@@ -1,0 +1,31 @@
+<form #loginForm="ngForm" (ngSubmit)="OnSubmit(LoginID.value,Pass.Value)">
+  <div style="padding-left:16px">
+      <div class="form-row">
+          <div class="form-group col-md-12">
+              <h4>User Login</h4>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-12">
+              <input class="form-control" name="LoginID" #LoginID ngModel placeholder="UserName" required>
+              <div class="validation-error" *ngIf="LoginID.errors?.required && LoginID.touched">Email is Required.</div>
+              <div class="validation-error" *ngIf="LoginID.errors?.email && LoginID.touched">Email is Invalid.</div>
+          </div>
+          <div class="form-group col-md-12">
+              <input class="form-control" name="Pass" #Pass ngModel placeholder="Password" required>
+              <div class="validation-error" *ngIf="Pass.errors?.required && Pass.touched">Password is Required.</div>
+          </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-12">
+              <button type="button" class="btn btn-lg btn-block btn-secondary" [disabled]="!loginForm.valid">
+                Log In <i class="fa fa-arrow-circle-o-right"></i></button>
+            </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+            <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> New User? <a  routerLink="/clients" routerLinkActive="active">Register Here</a></div>
+        </div>
+      </div>
+  </div>
+</form>

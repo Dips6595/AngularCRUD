@@ -1,0 +1,74 @@
+<form #employerForm="ngForm" (ngSubmit)="onSubmit(employerForm)">
+        <div style="padding-left:16px">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input class="form-control" name="CompanyName" #CompanyName="ngModel" [(ngModel)]="employerService.selectedEmployer.CompanyName" 
+                     placeholder="CompanyName" required >
+                    <div class="validation-error" *ngIf="CompanyName.errors?.required && CompanyName.touched">Company Name is Required.</div>
+                </div>
+                <div class="form-group col-md-12">
+                    <input class="form-control" name="UserName" #UserName="ngModel" [(ngModel)]="employerService.selectedEmployer.UserName"
+                        placeholder="UserName (Email)" required [email]="employerService.selectedEmployer.UserName !== ''" >
+                    <div class="validation-error" *ngIf="UserName.errors?.required && UserName.touched">Email is Required.</div>
+                    <div class="validation-error" *ngIf="UserName.errors?.email && UserName.touched">Email is Invalid.</div> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input class="form-control" type="password" name="Password" #Password="ngModel" [(ngModel)]="employerService.selectedEmployer.Password" placeholder="Password" required>
+                  <div class="validation-error" *ngIf="Password.errors?.required && Password.touched">Password is Required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <input class="form-control" type="password" name="ConfirmPassword" placeholder="Confirm Password" #ConfirmPassword="ngModel" [(ngModel)]="employerService.selectedEmployer.ConfirmPassword" required appConfirmEqualValidator= "Password">
+                    <div class="validation-error" *ngIf="ConfirmPassword.errors?.required && ConfirmPassword.touched">Confirm Password is Required.</div>
+                    <div class="validation-error" *ngIf="ConfirmPassword.errors?.notEqual && !ConfirmPassword.errors?.required && ConfirmPassword.touched">Password and Confirm Password does not match.</div> 
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input class="form-control" name="ContactName" #ContactName="ngModel" [(ngModel)]="employerService.selectedEmployer.ContactName" placeholder="Contact Person Name" required>
+                  <div class="validation-error" *ngIf="ContactName.errors?.required && ContactName.touched">Contact is Required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <input class="form-control" name="ContactEmail" #ContactEmail="ngModel" [(ngModel)]="employerService.selectedEmployer.ContactEmail" placeholder="Contact Person Email" required>
+                  <div class="validation-error" *ngIf="ContactEmail.errors?.required && ContactEmail.touched">Contact Email is Required.</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                  <input class="form-control" name="Address" #Address="ngModel" [(ngModel)]="employerService.selectedEmployer.Address" placeholder="Address">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input class="form-control" name="PhoneNo" #PhoneNo="ngModel" [(ngModel)]="employerService.selectedEmployer.PhoneNo" placeholder="Contact Number" required>
+                    <div class="validation-error" *ngIf="PhoneNo.errors?.required && PhoneNo.touched">Contact Number is Required.</div> 
+                </div>
+                <div class="form-group col-md-6">
+                        <input class="form-control" name="FaxNo" #FaxNo="ngModel" [(ngModel)]="employerService.selectedEmployer.FaxNo" placeholder="Fax Number">
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label class="checkbox-inline control-label">
+                  <input type="checkbox" name="TxtSubscribe" #TxtSubscribe="ngModel" [(ngModel)]="employerService.selectedEmployer.TxtSubscribe">
+                         Subscribe to Text Message alert
+                </label>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                  <button [disabled]="!employerForm.valid" type="submit" class="btn btn-lg btn-block btn-info">
+                    <i class="fa fa-floppy-o"></i> Submit</button>
+                </div>
+                <div class="form-group col-md-4">
+                  <button type="button" class="btn btn-lg btn-block btn-secondary" (click)="resetForm(employerForm)">
+                    <i class="fa fa-repeat"></i> Reset</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+      
+      
+      
